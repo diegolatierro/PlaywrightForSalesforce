@@ -38,3 +38,8 @@ export async function createAccount(accountName: string) {
         console.error('Error creating account:', error);
     }
 }
+
+//automation_org@altimetrik.com / Altimetrik.2024
+//customer key: 3MVG9JJwBBbcN47KDHo767ak9S9sVDfH5BXIsA_zCXa47UiCG_oWVpiWGWU4Q9cC.pJk7oHA6lTXMy5mrNzsR
+//customer secret: 7CBC093317028E48F9E92B560B5811F2CC8BF0A65975C64ED65BA6E93CBCADFB
+//security token: Ni6jJIZFNFW7omwUuX7r8KFzA
