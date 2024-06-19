@@ -1,7 +1,7 @@
 import { Locator, Page } from '@playwright/test';
 import { HelperBase } from './helperBase';
 
-export class NavigationPage extends HelperBase {
+export class LoginPage extends HelperBase {
     readonly loginEmailInputField: Locator;
     readonly loginPasswordInputField: Locator;
     readonly loginButton: Locator;

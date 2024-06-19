@@ -1,9 +1,9 @@
-import {Page, expect} from '@playwright/test'
+import { Page } from '@playwright/test'
 import { faker } from '@faker-js/faker';
 
-export function generateFakeName(): string {
+/*export function generateFakeName(): string {
     return faker.person.firstName();
-}
+}*/
 export class HelperBase{
     readonly page: Page
 
