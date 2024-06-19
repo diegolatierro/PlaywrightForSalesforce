@@ -1,0 +1,7 @@
+{
+    "salesforce": {
+        "url": "https://login.salesforce.com/",
+        "username": "automation_org@altimetrik.com",
+        "password": "Altimetrik.2024"
+    }
+}

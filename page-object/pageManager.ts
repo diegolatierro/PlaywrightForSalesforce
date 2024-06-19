@@ -2,6 +2,7 @@ import{Page, expect} from '@playwright/test'
 import { NavigationPage } from './navigationPage'
 import { AccountPage } from './accountPage'
 import { ContactPage } from './contactPage'
+import config from '../config.json';
 
 export class PageManager{
     private readonly page:Page
@@ -26,5 +27,11 @@ export class PageManager{
     }
     contact(){
         return this.contactPage
+    }
+    async initialize() {
+        await this.page.goto(config.salesforce.url);
+        await this.login().loginToSalesforce(config.salesforce.username, config.salesforce.password);
+        await this.login().searchApplication('Service');
+        await this.page.waitForLoadState('networkidle');
     }
 }

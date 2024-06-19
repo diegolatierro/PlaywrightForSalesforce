@@ -8,7 +8,7 @@ export class ContactPage extends HelperBase {
     }
 
     async createBasic(name: string) {
-        await this.clickOnContactsTab();
+        await this.navigateToTab("Contacts")
         await this.clickOnNewButton();
         await this.createBasicContact(name);
     }
@@ -19,17 +19,10 @@ export class ContactPage extends HelperBase {
 
     async delete(name: string) {
         // Implementation for delete
-        await this.clickOnContactsTab()
+        await this.navigateToTab("Contacts")
         await this.searchContact(name)
         await this.deleteContactOption()
         await this.deleteContactConfirmation()
-    }
-
-
-    private async clickOnContactsTab() {
-        const ContactTab = this.page.locator('a[title="Contacts"]')
-        await ContactTab.waitFor({ state: 'visible' })
-        await ContactTab.click()
     }
 
     private async clickOnNewButton() {
@@ -44,7 +37,7 @@ export class ContactPage extends HelperBase {
         const saveButton = this.page.locator('button[name="SaveEdit"]')
         await saveButton.waitFor({ state: 'visible' })
         await saveButton.click()
-
+        await this.page.waitForLoadState('networkidle')
     }
     private async searchContact(name: string){
         //const searchbarButton = this.page.locator('button').first()

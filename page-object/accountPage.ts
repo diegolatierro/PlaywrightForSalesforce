@@ -8,7 +8,7 @@ export class AccountPage extends HelperBase {
     }
 
     async createBasic(name: string) {
-        await this.clickOnAccountTab();
+        await this.navigateToTab("Accounts")
         await this.clickOnNewButton();
         await this.createAnAccount(name);
     }
@@ -19,17 +19,10 @@ export class AccountPage extends HelperBase {
 
     async delete(name: string) {
         // Implementation for delete
-        await this.clickOnAccountTab()
+        await this.navigateToTab("Accounts")
         await this.searchAnAccount(name)
         await this.deleteAccountOption()
         await this.deleteAccountConfirmation()
-    }
-
-
-    private async clickOnAccountTab() {
-        const newAccountTab = this.page.locator('a[title="Accounts"]')
-        await newAccountTab.waitFor({ state: 'visible' })
-        await newAccountTab.click()
     }
 
     private async clickOnNewButton() {
