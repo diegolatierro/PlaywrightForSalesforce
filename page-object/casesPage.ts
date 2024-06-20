@@ -30,15 +30,6 @@ export class CasePage extends BaseEntityPage {
         await this.deleteEntityConfirmation();
     }
 
-    private async selectPicklistOption(picklistButtonLocator: string, optionText: string) {
-        const picklistButton = this.page.locator(picklistButtonLocator);
-        await picklistButton.waitFor({ state: 'visible' });
-        await picklistButton.click();
-        const option = this.page.locator('lightning-base-combobox-item').filter({ hasText: optionText });
-        await option.waitFor({ state: 'visible' });
-        await option.click();
-    }
-
     private async getCaseNumber(): Promise<string> {
         const caseNumberLocator = this.page.locator('p:has-text("Case Number") + p lightning-formatted-text');
         await caseNumberLocator.waitFor({ state: 'visible' });

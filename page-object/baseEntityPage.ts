@@ -69,4 +69,12 @@ export class BaseEntityPage {
         const contactElement = this.page.locator(`span[title="${name}"]`)
         await contactElement.click()
     }
+    async selectPicklistOption(picklistButtonLocator: string, optionText: string) {
+        const picklistButton = this.page.locator(picklistButtonLocator);
+        await picklistButton.waitFor({ state: 'visible' });
+        await picklistButton.click();
+        const option = this.page.locator('lightning-base-combobox-item').filter({ hasText: optionText });
+        await option.waitFor({ state: 'visible' });
+        await option.click();
+    }
 }
