@@ -6,11 +6,14 @@ export class OpportunityPage extends BaseEntityPage {
         super(page);
     }
 
-    async createBasic(name: string, closeDate: string, stage: string) {
+    async createBasic(fields: { [key: string]: string }) {
         await this.navigateToTab('Opportunities');
         await this.clickOnNewButton();
-        await this.selectPicklistOption('button[aria-label="Stage"]', stage); // Adjust as needed
-        await this.createEntity({ 'Opportunity Name': name, 'Close Date': closeDate });
+        await this.selectPicklistOption('button[aria-label="Stage"]', fields['Stage']);
+        await this.createEntity({
+            'Opportunity Name': fields['Opportunity Name'],
+            'Close Date': fields['Close Date']
+        });
     }
 
     async delete(name: string) {

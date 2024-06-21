@@ -6,15 +6,17 @@ export class ContactPage extends BaseEntityPage {
         super(page);
     }
 
-    async createBasic(name: string) {
+    async createBasic(fields: { [key: string]: string }) {
         await this.navigateToTab('Contacts');
-        await this.clickOnNewButton();
-        await this.createEntity({ 'Last Name': name });
+        //await this.clickOnNewButton();
+        await this.page.locator('button[name="NewContact"]').click()
+        await this.createEntity(fields);
     }
 
-    async delete(name: string) {
+    async delete(completeName: string) {
         await this.navigateToTab('Contacts');
-        await this.searchTopBar(name);
+        //await this.searchEntity(lastName);
+        await this.searchTopBar(completeName);
         await this.deleteEntityOption();
         await this.deleteEntityConfirmation();
     }

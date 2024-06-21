@@ -6,10 +6,14 @@ export class AccountPage extends BaseEntityPage {
         super(page);
     }
 
-    async createBasic(name: string) {
+    async createBasic(fields: { [key: string]: string }) {
         await this.navigateToTab('Accounts');
         await this.clickOnNewButton();
-        await this.createEntity({ 'Account Name': name });
+        await this.createEntity({
+            'Account Name': fields['Name'],
+            'Phone': fields['Phone'],
+            'Website': fields['Website']
+        });
     }
 
     async delete(name: string) {

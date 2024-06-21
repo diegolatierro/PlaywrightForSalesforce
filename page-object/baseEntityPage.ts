@@ -57,6 +57,7 @@ export class BaseEntityPage {
         const deleteButton = this.page.locator('button[title="Delete"]');
         await deleteButton.waitFor({ state: 'visible' });
         await deleteButton.click();
+        await this.page.waitForLoadState('networkidle');
     }
 
     protected async searchTopBar(name:string){
@@ -65,7 +66,9 @@ export class BaseEntityPage {
         const searchInput = this.page.getByPlaceholder('Search...');
         await searchInput.waitFor({ state: 'visible' });
         await searchInput.fill(name);
+        await searchButton.click()
         await this.page.waitForLoadState('networkidle');
+        await searchButton.click()
         const contactElement = this.page.locator(`span[title="${name}"]`)
         await contactElement.click()
     }
